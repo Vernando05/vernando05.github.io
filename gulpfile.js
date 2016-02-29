@@ -124,7 +124,7 @@ gulp.task('copy-vendors', function () {
 });
 
 gulp.task('deploy', function () {
-	return gulp.src('src/_site')
+	return gulp.src('src/_site/**')
 		.pipe(ghPages({branch: "master"}));
 });
 
@@ -142,7 +142,7 @@ gulp.task('watch', function () {
 gulp.task('default', function () {
 	flags.initBuild = true;
 	flags.production = false;
-	runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'copy-vendors', 'watch']);
+	runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'copy-vendors', 'watch'], 'jekyll');
 });
 
 gulp.task('production', function () {
