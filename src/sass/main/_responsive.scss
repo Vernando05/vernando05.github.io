@@ -12,12 +12,27 @@
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-
+	#contact-form {
+		margin-bottom: 35px;
+	}
 }
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 767px) {
-
+	h1.absolute-center {
+		font-size: 24px;
+		letter-spacing: 20px;
+		padding-left: 20px;
+	}
+	#contact-form {
+		margin-bottom: 50px;
+		.form-group > .col-sm-6:first-child {
+			margin-bottom: 15px;
+		} 
+		.box-btn.text-right {
+			text-align: center;
+		}
+	}
 }
 
 /* Extra Small Devices, Phones */ 
