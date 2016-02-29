@@ -133,7 +133,6 @@ gulp.task('watch', function () {
 	gulp.watch('src/sass/bootstrap/*.scss', ['style-bootstrap']);
 	gulp.watch('src/sass/main/*.scss', ['style-main']);
 	gulp.watch('src/javascripts/main.js', ['script-main']);
-	gulp.watch('src/javascripts/modernizr.js', ['script-lib']);
 	gulp.watch(['src/javascripts/modernizr.js', 'src/javascripts/logoanimation.js'], ['script-libhead']);
 	gulp.watch('src/images/**', ['images']);
 	gulp.watch('modernizr-config.json', ['modernizr']);
