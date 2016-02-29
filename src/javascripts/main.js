@@ -119,7 +119,7 @@
 				},
 				submitHandler: function (form) {
 					$('#contact-form .form-group').fadeTo("slow", 0.5, function() {
-						$(this).find(':input').prop('disabled', true);
+						$(this).find(':input, :button').prop('disabled', true);
 						$(this).find('label').css('cursor','default');
 					});
 					$.ajax({
@@ -130,14 +130,14 @@
 						success: function () {
 							$('#success-message').fadeTo("slow", 1);
 							$('#contact-form .form-group').fadeTo( "slow", 0.5, function() {
-								$(this).find(':input').removeAttr('disabled');
+								$(this).find(':input, :button').removeAttr('disabled');
 								$(this).find('label').css('cursor','default');
 							});
 						},
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							$('#error-message').fadeTo("slow", 1);
 							$('#contact-form .form-group').fadeTo( "slow", 0.5, function () {
-								$(this).find(':input').removeAttr('disabled');
+								$(this).find(':input, :button').removeAttr('disabled');
 								$(this).find('label').css('cursor','default');
 							});
 							//alert(errorThrown);

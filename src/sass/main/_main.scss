@@ -777,14 +777,14 @@ path {
 	color: #757474;
 }
 .btn-black {
-	background-color: transparent;
+	background: transparent;
 	padding: 6px 30px; 
 	border: 1px solid #000;
 	border-radius: 0;
 	color: #000;
 	font: 18px "JosefinSans-Light", monospace;
-	&:hover, &:focus, &:active {
-		background-color: #000;
+	&:hover, &:focus, &:active, &:active:hover, &:active:focus {
+		background: #000;
 		border-color: #000;
 		color: #fff;
 	} 
