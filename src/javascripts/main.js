@@ -115,7 +115,7 @@
 					$(this).find('label').css('cursor','default');
 				});
 				$.ajax({
-					url: "//formspsdsree.io/vernan@vernandosimbolon.com",
+					url: "//formspree.io/vernan@vernandosimbolon.com",
 					method: "POST",
 					data: $("#contact-form").serialize(),
 					dataType: "json",
