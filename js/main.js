@@ -45,7 +45,7 @@
 		$(function () {
 			var $main = $('#main-content'),
 				$body = $('body'),
-				$nav = $('#main-nav a'),
+				$nav = $('#main-nav a, .header-top a'),
 				everPushed = false;
 
 			$nav.click(function () {
@@ -73,70 +73,80 @@
 				$('#load-screen').slideDown(1500, "easeInOutCubic", function () {
 					$main.load(href + ' .main-page', function () {
 						onCompleteLoad();
+						contactForm();
 					});
 				});
 			}
 			return false;
 		});
-		// Contact Validation
-		$("#contact-form").validate({
-			rules: {
-				name: {
-					required: true,
-					minlength: 2
-				},
-				_replyto: {
-					required: true,
-					minlength: 3,
-					email: true,
-				},
-				message:  {
-					required: true,
-					minlength: 2
-				}
-			},
-			messages: {
-				name: {
-					required: "Please enter your name",
-					minlength: "Your name must consist of at least 2 characters"
-				},
-				_replyto: {
-					required: "Please enter a valid email address",
-					minlength: "Please enter a valid email address"
-				},
-				message: {
-					required: "Please enter your message",
-					minlength: "Your message must consist of at least 2 characters"
-				},
-			},
-			submitHandler: function (form) {
-				$('#contact-form').fadeTo( "slow", 0.5, function() {
-					$(this).find(':input').prop('disabled', true);
-					$(this).find('label').css('cursor','default');
-				});
-				$.ajax({
-					url: "//formspree.io/vernan@vernandosimbolon.com",
-					method: "POST",
-					data: $("#contact-form").serialize(),
-					dataType: "json",
-					success: function () {
-						$('#success-modal').modal();
-						$('#contact-form').fadeTo( "slow", 1, function() {
-							$(this).find(':input').removeAttr('disabled');
-							$(this).find('label').css('cursor','default');
-						});
-					},
-					error: function (XMLHttpRequest, textStatus, errorThrown) {
-						$('#error-modal').modal();
-						$('#contact-form').fadeTo( "slow", 1, function () {
-							$(this).find(':input').removeAttr('disabled');
-							$(this).find('label').css('cursor','default');
-						});
-						//alert(errorThrown);
-					} 
-				});
-			}
+		$('.message-pop').click(function () {
+			$(this).fadeTo("slow", 0, function () {
+				$(this).hide();
+			});
+			$('#contact-form .form-group').fadeTo("slow", 1);
 		});
+		// Contact Validation
+		var contactForm = function () {
+			$("#contact-form").validate({
+				rules: {
+					name: {
+						required: true,
+						minlength: 2
+					},
+					_replyto: {
+						required: true,
+						minlength: 3,
+						email: true,
+					},
+					message:  {
+						required: true,
+						minlength: 2
+					}
+				},
+				messages: {
+					name: {
+						required: "Please enter your name",
+						minlength: "Your name must consist of at least 2 characters"
+					},
+					_replyto: {
+						required: "Please enter a valid email address",
+						minlength: "Please enter a valid email address"
+					},
+					message: {
+						required: "Please enter your message",
+						minlength: "Your message must consist of at least 2 characters"
+					},
+				},
+				submitHandler: function (form) {
+					$('#contact-form .form-group').fadeTo("slow", 0.5, function() {
+						$(this).find(':input, :button').prop('disabled', true);
+						$(this).find('label').css('cursor','default');
+					});
+					$.ajax({
+						url: "//formspree.io/vernan@vernandosimbolon.com",
+						method: "POST",
+						data: $("#contact-form").serialize(),
+						dataType: "json",
+						success: function () {
+							$('#success-message').fadeTo("slow", 1);
+							$('#contact-form .form-group').fadeTo( "slow", 0.5, function() {
+								$(this).find(':input, :button').removeAttr('disabled');
+								$(this).find('label').css('cursor','default');
+							});
+						},
+						error: function (XMLHttpRequest, textStatus, errorThrown) {
+							$('#error-message').fadeTo("slow", 1);
+							$('#contact-form .form-group').fadeTo( "slow", 0.5, function () {
+								$(this).find(':input, :button').removeAttr('disabled');
+								$(this).find('label').css('cursor','default');
+							});
+							//alert(errorThrown);
+						} 
+					});
+				}
+			});
+		};
+		contactForm();
 		$( "body" ).mousemove(function( event ) {
 			$(".bg-page").css('transform', 'translate(' + event.pageY /100 + 'px,' + -event.pageX /100 + 'px)');
 		});
