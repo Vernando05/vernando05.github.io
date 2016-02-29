@@ -752,14 +752,30 @@ path {
 .form-control:-moz-placeholder {
 	color: #000;
 }
-.modal-content {
+.message-pop {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	padding: 0 !important;
+	overflow: hidden !important;
+	display: none;
+	z-index: 200;
+}
+.message-content {
 	padding: 10px;
+	border: 1px solid #000;
+	max-width: 300px;
 	p {
 		margin-bottom: 0;
 		font: 14px "OratorStd-Regular", monospace;
 		color: #000;
 		text-align: center;
 	}
+}
+.modal-backdrop {
+	display: none !important;
 }
 #canvas {
 	position: fixed;
@@ -818,6 +834,10 @@ path {
 	.clearfix {
 		margin-bottom: 30px;
 	}
+}
+#contact-form {
+	position: relative;
+	display: block;
 }
 #cs {
 	.content {

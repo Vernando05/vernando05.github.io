@@ -79,6 +79,12 @@
 			}
 			return false;
 		});
+		$('.message-pop').click(function () {
+			$(this).fadeTo("slow", 0, function () {
+				$(this).hide();
+			});
+			$('#contact-form .form-group').fadeTo("slow", 1);
+		});
 		// Contact Validation
 		var contactForm = function () {
 			$("#contact-form").validate({
@@ -112,7 +118,7 @@
 					},
 				},
 				submitHandler: function (form) {
-					$('#contact-form').fadeTo( "slow", 0.5, function() {
+					$('#contact-form .form-group').fadeTo("slow", 0.5, function() {
 						$(this).find(':input').prop('disabled', true);
 						$(this).find('label').css('cursor','default');
 					});
@@ -122,15 +128,15 @@
 						data: $("#contact-form").serialize(),
 						dataType: "json",
 						success: function () {
-							$('#success-modal').modal();
-							$('#contact-form').fadeTo( "slow", 1, function() {
+							$('#success-message').fadeTo("slow", 1);
+							$('#contact-form .form-group').fadeTo( "slow", 0.5, function() {
 								$(this).find(':input').removeAttr('disabled');
 								$(this).find('label').css('cursor','default');
 							});
 						},
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
-							$('#error-modal').modal();
-							$('#contact-form').fadeTo( "slow", 1, function () {
+							$('#error-message').fadeTo("slow", 1);
+							$('#contact-form .form-group').fadeTo( "slow", 0.5, function () {
 								$(this).find(':input').removeAttr('disabled');
 								$(this).find('label').css('cursor','default');
 							});
