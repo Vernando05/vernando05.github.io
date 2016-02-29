@@ -1,5 +1,6 @@
 .sass-cache
 node_modules
 .jekyll-metadata
+.publish
 src/_site
 src/components
