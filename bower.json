@@ -1,0 +1,25 @@
+{
+  "name": "vernandosite",
+  "version": "0.0.0",
+  "description": "vernando simbolon's personal web",
+  "main": "index.html",
+  "authors": [
+    "Vernando Simbolon"
+  ],
+  "license": "MIT",
+  "homepage": "vernandosimbolon.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "fontawesome#~4.5.0",
+    "jquery": "~2.1.4",
+    "jquery-ui": "~1.11.4",
+    "simple-line-icons": "~2.2.3"
+  }
+}

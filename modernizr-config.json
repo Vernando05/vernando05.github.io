@@ -1,0 +1,12 @@
+{
+	"classPrefix": "",
+		"options": [
+		"addTest",
+		"testProp",
+		"setClasses"
+	],
+	"feature-detects": [
+		"css/filters",
+		"svg/smil"
+	]
+}
