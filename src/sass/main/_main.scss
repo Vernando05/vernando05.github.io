@@ -739,8 +739,6 @@ path {
 	right: 0;
 	bottom: 0;
 	position: absolute;
-	padding: 0 !important;
-	overflow: hidden !important;
 	display: none;
 	z-index: 200;
 }
@@ -748,6 +746,7 @@ path {
 	padding: 10px;
 	border: 1px solid #000;
 	max-width: 300px;
+	background: white;
 	p {
 		margin-bottom: 0;
 		font: 14px "OratorStd-Regular", monospace;
