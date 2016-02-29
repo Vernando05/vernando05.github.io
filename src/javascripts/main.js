@@ -45,7 +45,7 @@
 		$(function () {
 			var $main = $('#main-content'),
 				$body = $('body'),
-				$nav = $('#main-nav a'),
+				$nav = $('#main-nav a, .header-top a'),
 				everPushed = false;
 
 			$nav.click(function () {
