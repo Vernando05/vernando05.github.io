@@ -14,13 +14,7 @@ $assets-sprite-dimensions: true;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
 }
-@font-face {
-	font-family:'Lombok';
-	src: url('../fonts/Lombok.otf') format('opentype'); 
-	font-weight: normal;
-	font-style: normal;
-	font-stretch: normal;
-}
+
 @font-face {
 	font-family:'OratorStd-Regular';
 	src: url('../fonts/OratorStd_gdi.eot');
