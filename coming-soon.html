@@ -50,58 +50,71 @@
 </head>
 
 	<body>
-
-		<div id="load-screen">
-	<div id="loader" class="absolute-center">
-		<?xml version="1.0" encoding="utf-8"?>
-		<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-		<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 640 640" enable-background="new 0 0 640 640" xml:space="preserve">
-		<path class="triangle" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M85,497 83.405,497 319.521,88.035 555.639,497 85,497 "/>
-		<path class="triangle-bones1" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 83.405,497 L 460.953,333"/>
-		<path class="triangle-bones2" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 555.639,497 L 178.091,333"/>
-		<path class="triangle-bones3" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 319.521,88.035 L 320,497"/>
-		<path class="triangle-inverted1" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 320,497 L 178.091,333"/>
-		<path class="triangle-inverted2" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 460.953,333 L 320,497"/>
-		<path class="triangle-inverted3" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 178,333 L 461,333"/>
-		</svg>
-	</div>
-</div>
-<button type="button" class="tcon tcon-menu--xcross" aria-label="toggle menu">
-	<span class="tcon-menu__lines" aria-hidden="true"></span>
-	<span class="tcon-visuallyhidden">toggle menu</span>
-</button>
-<header>
-	<div class="header-top">
+		
+		<div id="main-content">
+			<canvas id="canvas"></canvas>
+<section id="cs" class="main-page">
+	<div class="content">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<a href="https://vernandosimbolon.com"><img src="/images/logo1-vernando-simbolon.png" class="img-responsive" alt="Vernando Simbolon"></a>
+					<div class="text-center absolute-center">
+						<h1>404</h1>
+						<a href="index.html"><h3>Back to Home</h3></a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</header>
-<nav id="main-nav">
-	<div class="absolute-center">
-		<ul class="main-menu">
-			<li><a class="fx-link-side" href="https://vernandosimbolon.com">HOME</a></li>
-			<li><a class="fx-link-side" href="/coming-soon.html">ABOUT</a></li>
-			<li><a class="fx-link-side" target="_blank" href="https://id.linkedin.com/in/vernandosimbolon">PORTFOLIO</a></li>
-			<li><a class="fx-link-side" href="/coming-soon.html">BLOG</a></li>
-			<li><a class="fx-link-side" href="/contact.html">CONTACT</a></li>
-		</ul>
-	</div>
-</nav>
-
-		<div id="main-content">
-			<section id="home" class="main-page">
-	<div id="bg"></div>
-	<div class="bg-page"></div>
-	<div class="overlay-blend"></div>
-	<h1 class="absolute-center">VERNANDO SIMBOLON</h1>	
 </section>
-		</div>		
+<script>
+	var canvas = document.getElementById('canvas'),
+		ctx = canvas.getContext('2d');
+
+	// a variant using fixed canvas size but strecthes the result.
+	// emulates interference/bad reception
+	// using a different "noise" algo
+	canvas.width =  canvas.height = 300;
+
+	function resize() {
+		canvas.style.width = window.innerWidth + 'px';
+		canvas.style.height = window.innerHeight + 'px';
+	}
+	resize();
+	window.onresize = resize;
+
+	function noise(ctx) {
+		
+		var w = ctx.canvas.width,
+			h = ctx.canvas.height,
+			idata = ctx.getImageData(0, 0, w, h),
+			buffer32 = new Uint32Array(idata.data.buffer),
+			len = buffer32.length,
+			i = 0,
+			pr = 456 * Math.random(),
+			prs = 716 * Math.random();;
+
+		for(; i < len;) {
+			buffer32[i++] = ((pr % 155)|0) << 24;
+			pr += prs * 0.2;
+		}
+		
+		ctx.putImageData(idata, 0, 0);
+	}
+
+	var toggle = true;
+
+	(function loop() {
+		toggle = !toggle;
+		if (toggle) {
+			requestAnimationFrame(loop);
+			return;
+		}
+		noise(ctx);
+		requestAnimationFrame(loop);
+	})();
+</script>
+		</div>
 
 		<script src="/js/lib.min.js"></script>
 <script src="/js/main.js"></script>
