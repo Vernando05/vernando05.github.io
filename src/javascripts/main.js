@@ -137,8 +137,8 @@
 				});
 			}
 		});
-		// $( "body" ).mousemove(function( event ) {
-		// 	$(".bg-page").css('transform', 'translate(' + event.pageY /100 + 'px,' + -event.pageX /100 + 'px)');
-		// });
+		$( "body" ).mousemove(function( event ) {
+			$(".bg-page").css('transform', 'translate(' + event.pageY /100 + 'px,' + -event.pageX /100 + 'px)');
+		});
 	});
 })();
