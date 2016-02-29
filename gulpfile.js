@@ -9,6 +9,7 @@ var gulp = require('gulp'),
 	copy = require('gulp-copy'),
 	concat = require('gulp-concat'),
 	rename = require('gulp-rename'),
+	ghPages = require ('gulp-gh-pages'),
 	del = require('del'),
 	runSequence = require('run-sequence'),
 	order = require('gulp-order'),
@@ -116,10 +117,15 @@ gulp.task('images', function () {
 		.pipe(gulp.dest('src/_site/images'));
 });
 
-gulp.task('copy-vendors', function() {
+gulp.task('copy-vendors', function () {
 	var fontAwesome = gulp.src('src/components/simple-line-icons/fonts/**')
 		.pipe(gulp.dest('src/_site/fonts'));
 	return merge(fontAwesome);
+});
+
+gulp.task('deploy', function () {
+	return gulp.src('src/_site')
+		.pipe(ghPages({branch: "master"}));
 });
 
 gulp.task('watch', function () {
@@ -136,11 +142,11 @@ gulp.task('watch', function () {
 gulp.task('default', function () {
 	flags.initBuild = true;
 	flags.production = false;
-	runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'copy-vendors', 'watch'], 'jekyll');
+	runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'copy-vendors', 'watch']);
 });
 
 gulp.task('production', function () {
 	flags.initBuild = true;
 	flags.production = true;
-	runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'copy-vendors', 'watch'], 'jekyll');
+	runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'copy-vendors', 'watch'], 'deploy');
 });
