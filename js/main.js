@@ -46,12 +46,15 @@
 			var $main = $('#main-content'),
 				$body = $('body'),
 				$nav = $('#main-nav a, .header-top a'),
+				$tcon = $('.tcon'),
 				everPushed = false;
 
 			$nav.click(function () {
 				$body.removeClass('show-nav');
 				$('.main-menu').removeClass('animate-main-menu');
-				transformicons.toggle('.tcon-menu--xcross');
+				if ($tcon.hasClass('tcon-transform')) {
+					transformicons.revert('.tcon-menu--xcross');				
+				}	
 				var toLoad = $(this).attr("href");
 				history.pushState(null, '', toLoad);
 				everPushed = true;
@@ -148,7 +151,15 @@
 		};
 		contactForm();
 		$( "body" ).mousemove(function( event ) {
-			$(".bg-page").css('transform', 'translate(' + event.pageY /100 + 'px,' + -event.pageX /100 + 'px)');
+			var x, y,
+				pageY = event.pageY / 100,
+				pageX = -event.pageX / 100,
+				countBackY = pageY - 5,
+				countBackX = Math.abs(pageX) - 5;
+
+			x = pageY > 5 ? 5 - countBackY : x = pageY;
+			y = pageX < -5 ? -5 + countBackX : y = pageX;
+			$(".bg-page").css('transform', 'translate(' + x + 'px,' + y + 'px)');
 		});
 	});
 })();
