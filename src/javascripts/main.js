@@ -46,12 +46,15 @@
 			var $main = $('#main-content'),
 				$body = $('body'),
 				$nav = $('#main-nav a, .header-top a'),
+				$tcon = $('.tcon'),
 				everPushed = false;
 
 			$nav.click(function () {
 				$body.removeClass('show-nav');
 				$('.main-menu').removeClass('animate-main-menu');
-				transformicons.toggle('.tcon-menu--xcross');
+				if ($tcon.hasClass('tcon-transform')) {
+					transformicons.revert('.tcon-menu--xcross');				
+				}	
 				var toLoad = $(this).attr("href");
 				history.pushState(null, '', toLoad);
 				everPushed = true;
