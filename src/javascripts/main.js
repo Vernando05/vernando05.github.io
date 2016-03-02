@@ -151,7 +151,15 @@
 		};
 		contactForm();
 		$( "body" ).mousemove(function( event ) {
-			$(".bg-page").css('transform', 'translate(' + event.pageY /100 + 'px,' + -event.pageX /100 + 'px)');
+			var x, y,
+				pageY = event.pageY / 100,
+				pageX = -event.pageX / 100,
+				countBackY = pageY - 5,
+				countBackX = Math.abs(pageX) - 5;
+
+			x = pageY > 5 ? 5 - countBackY : x = pageY;
+			y = pageX < -5 ? -5 + countBackX : y = pageX;
+			$(".bg-page").css('transform', 'translate(' + x + 'px,' + y + 'px)');
 		});
 	});
 })();
