@@ -3,7 +3,7 @@ language: ruby
 rvm: 
 	- 2.2
 
-install: gem install jekyll html-proofer
+install: gem install html-proofer
 
 script: htmlproof . --disable-external
 
