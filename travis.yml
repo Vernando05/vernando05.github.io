@@ -1,0 +1,16 @@
+language: ruby
+
+rvm: 
+	- 2.2
+
+install: gem install jekyll html-proofer
+
+script: htmlproof . --disable-external
+
+branches: 
+	only:
+		- master
+
+env: 
+	global:
+		- NOKOGIRI_USE_SYSTEM_LIBRARIES=true
