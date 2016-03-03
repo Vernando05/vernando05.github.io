@@ -8,9 +8,9 @@ install: gem install html-proofer
 script: htmlproof . --disable-external
 
 branches: 
-only:
-- master
+ only: 
+  - master
 
 env: 
-global:
-- NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+ global: 
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
