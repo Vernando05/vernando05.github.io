@@ -126,7 +126,7 @@ gulp.task('copy-vendors', function () {
 gulp.task('deploy', function () {
 	return gulp.src('src/_site/**')
 		.pipe(ghPages({
-			remoteUrl: "https://$github_token@github.com/Vernando05/vernando05.github.io.git"
+			remoteUrl: "https://$github_token@github.com/Vernando05/vernando05.github.io.git",
 			branch: "master"
 		}));
 });
