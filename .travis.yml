@@ -6,7 +6,7 @@ rvm:
 install: gem install jekyll html-proofer
 
 before_script:
- - npm install gulp run-sequence gulp-gh-pages
+ - npm install gulp run-sequence gulp-gh-pages gulp-load-plugins
 
 script: gulp test
 
