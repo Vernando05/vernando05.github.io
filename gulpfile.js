@@ -1,23 +1,6 @@
 var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')({ pattern: ['gulp-*', 'del', 'merge-stream', 'run-sequence'] }),
 	exec = require('child_process').exec;
-	// autoprefixer = require('gulp-autoprefixer'),
-	// compass = require('gulp-compass'),
-	// exec = require('child_process').exec,
-	// jshint = require('gulp-jshint'),
-	// processhtml = require('gulp-processhtml'),
-	// uglify = require('gulp-uglify'),
-	// minifyCss = require('gulp-minify-css'),
-	// copy = require('gulp-copy'),
-	// concat = require('gulp-concat'),
-	// rename = require('gulp-rename'),
-	// ghPages = require ('gulp-gh-pages'),
-	// del = require('del'),
-	// runSequence = require('run-sequence'),
-	// order = require('gulp-order'),
-	// merge = require('merge-stream'),
-	// modernizr = require('gulp-modernizr'),
-	// cache = require('gulp-cache');
 
 var flags = {
 	initBuild : false,
