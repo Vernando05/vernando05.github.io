@@ -1,21 +1,23 @@
 var gulp = require('gulp'),
-	autoprefixer = require('gulp-autoprefixer'),
-	compass = require('gulp-compass'),
-	exec = require('child_process').exec,
-	jshint = require('gulp-jshint'),
-	processhtml = require('gulp-processhtml'),
-	uglify = require('gulp-uglify'),
-	minifyCss = require('gulp-minify-css'),
-	copy = require('gulp-copy'),
-	concat = require('gulp-concat'),
-	rename = require('gulp-rename'),
-	ghPages = require ('gulp-gh-pages'),
-	del = require('del'),
-	runSequence = require('run-sequence'),
-	order = require('gulp-order'),
-	merge = require('merge-stream'),
-	modernizr = require('gulp-modernizr'),
-	cache = require('gulp-cache');
+	plugins = require('gulp-load-plugins')({ pattern: ['gulp-*', 'del', 'merge-stream', 'run-sequence'] }),
+	exec = require('child_process').exec;
+	// autoprefixer = require('gulp-autoprefixer'),
+	// compass = require('gulp-compass'),
+	// exec = require('child_process').exec,
+	// jshint = require('gulp-jshint'),
+	// processhtml = require('gulp-processhtml'),
+	// uglify = require('gulp-uglify'),
+	// minifyCss = require('gulp-minify-css'),
+	// copy = require('gulp-copy'),
+	// concat = require('gulp-concat'),
+	// rename = require('gulp-rename'),
+	// ghPages = require ('gulp-gh-pages'),
+	// del = require('del'),
+	// runSequence = require('run-sequence'),
+	// order = require('gulp-order'),
+	// merge = require('merge-stream'),
+	// modernizr = require('gulp-modernizr'),
+	// cache = require('gulp-cache');
 
 var flags = {
 	initBuild : false,
@@ -23,26 +25,26 @@ var flags = {
 }
 
 gulp.task('clean', function () {
-	return del(['src/_site/**', '!src/_site', '!src/_site/.git', '!src/_site/CNAME', '!src/_site/LICENSE', '!src/_site/README.md']);
+	return plugins.del(['src/_site/**', '!src/_site', '!src/_site/.git', '!src/_site/CNAME', '!src/_site/LICENSE', '!src/_site/README.md']);
 });
 
 gulp.task('style-bootstrap', function () {
-	del.sync(['src/_site/css/styles.css', 'src/_site/css/bootstrap.min.css']);
+	plugins.del.sync(['src/_site/css/styles.css', 'src/_site/css/bootstrap.min.css']);
 	return gulp.src('src/sass/bootstrap/*.scss')
-		.pipe(compass({
+		.pipe(plugins.compass({
 			config_file: 'config.rb',
 			sass: 'src/sass/bootstrap',
 			css: 'src/_site/css'
 		}))
-		.pipe(autoprefixer('last 14 version', 'ie', 'iOS', 'Safari', 'Firefox', 'Opera', 'bb', 'Android', 'Chrome', 'ChromeAndroid'))
-		.pipe(rename('bootstrap.min.css'))
+		.pipe(plugins.autoprefixer('last 14 version', 'ie', 'iOS', 'Safari', 'Firefox', 'Opera', 'bb', 'Android', 'Chrome', 'ChromeAndroid'))
+		.pipe(plugins.rename('bootstrap.min.css'))
 		.pipe(gulp.dest('src/_site/css'));
 });
 
 gulp.task('style-main', function () {
-	del.sync('src/_site/css/styles.css');
+	plugins.del.sync('src/_site/css/styles.css');
 	return gulp.src('src/sass/main/*.scss')
-		.pipe(compass({
+		.pipe(plugins.compass({
 			http_path: '/',
 			style: 'compressed',
 			sass: 'src/sass/main',
@@ -51,7 +53,7 @@ gulp.task('style-main', function () {
 			font: 'src/fonts',
 			image: 'src/images'
 		}))
-		.pipe(autoprefixer('last 14 version', 'ie', 'iOS', 'Safari', 'Firefox', 'Opera', 'bb', 'Android', 'Chrome', 'ChromeAndroid'))
+		.pipe(plugins.autoprefixer('last 14 version', 'ie', 'iOS', 'Safari', 'Firefox', 'Opera', 'bb', 'Android', 'Chrome', 'ChromeAndroid'))
 		.pipe(gulp.dest('src/_site/css'));
 });
 
@@ -59,17 +61,17 @@ gulp.task('style-lib', function () {
 	var paths = ['src/components/simple-line-icons/css/simple-line-icons.css',
 			'src/components/transformicons/transformicons.css'];
 	return gulp.src(paths)
-		.pipe(concat('lib.min.css'))
-		.pipe(minifyCss())
+		.pipe(plugins.concat('lib.min.css'))
+		.pipe(plugins.minifyCss())
 		.pipe(gulp.dest('src/_site/css'));
 });
 
 gulp.task('script-main', function () {
 	return gulp.src('src/javascripts/main.js')
-		.pipe(jshint({
+		.pipe(plugins.jshint({
 			lookup: false
 		}))
-		.pipe(jshint.reporter('default'))
+		.pipe(plugins.jshint.reporter('default'))
 		.pipe(gulp.dest('src/_site/js'));
 });
 
@@ -81,9 +83,9 @@ gulp.task('script-lib', function () {
 				'src/components/jquery-validation/dist/jquery.validate.min.js'];
 
 	return gulp.src(paths)
-		.pipe(order(paths, {base: '.'}))
-		.pipe(concat('lib.min.js'))
-		.pipe(uglify())
+		.pipe(plugins.order(paths, {base: '.'}))
+		.pipe(plugins.concat('lib.min.js'))
+		.pipe(plugins.uglify())
 		.pipe(gulp.dest('src/_site/js'));
 });
 
@@ -92,9 +94,9 @@ gulp.task('script-libhead', function () {
 				'src/javascripts/logoanimation.js'];
 
 	return gulp.src(paths)
-		.pipe(order(paths, {base: '.'}))
-		.pipe(concat('libhead.min.js'))
-		.pipe(uglify())
+		.pipe(plugins.order(paths, {base: '.'}))
+		.pipe(plugins.concat('libhead.min.js'))
+		.pipe(plugins.uglify())
 		.pipe(gulp.dest('src/_site/js'));
 });
 
@@ -117,15 +119,9 @@ gulp.task('images', function () {
 		.pipe(gulp.dest('src/_site/images'));
 });
 
-gulp.task('copy-vendors', function () {
-	var fontAwesome = gulp.src('src/components/simple-line-icons/fonts/**')
-		.pipe(gulp.dest('src/_site/fonts'));
-	return merge(fontAwesome);
-});
-
 gulp.task('deploy', function () {
 	return gulp.src('src/_site/**')
-		.pipe(ghPages({
+		.pipe(plugins.ghPages({
 			remoteUrl: "https://$github_token@github.com/Vernando05/vernando05.github.io.git",
 			branch: "master"
 		}));
@@ -133,7 +129,7 @@ gulp.task('deploy', function () {
 
 gulp.task('html-proofer', function (cb) {
 	exec('htmlproof ' + 'src/_site ' + '--disable-external', function (err, stdout, stderr) {
-		util.log(stdout)
+		console.log(stdout)
 		cb(err);
 	});
 });
@@ -151,15 +147,15 @@ gulp.task('watch', function () {
 gulp.task('default', function () {
 	flags.initBuild = true;
 	flags.production = false;
-	runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'copy-vendors', 'watch'], 'jekyll');
+	plugins.runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'watch'], 'jekyll');
 });
 
 gulp.task('production', function () {
 	flags.initBuild = true;
 	flags.production = true;
-	runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'copy-vendors', 'watch']);
+	plugins.runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'watch']);
 });
 
 gulp.task('test', function () {
-	runSequence('html-proofer', 'deploy');
+	plugins.runSequence('html-proofer', 'deploy');
 });
