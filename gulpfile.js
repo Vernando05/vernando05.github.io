@@ -99,14 +99,14 @@ gulp.task('script-libhead', function () {
 });
 
 gulp.task('modernizr', function (cb) {
-	exec( 'modernizr -c modernizr-config.json -d src/javascripts', function(err, stdout, stderr) {
+	exec( 'modernizr -c modernizr-config.json -d src/javascripts', function (err, stdout, stderr) {
 		console.log(stdout);
 		cb(err);
 	});
 });
 
 gulp.task('jekyll', function (cb) {
-	exec( flags.initBuild ? 'jekyll build' : 'jekyll serve --skip-initial-build', function(err, stdout, stderr) {
+	exec( flags.initBuild ? 'jekyll build' : 'jekyll serve --skip-initial-build', function (err, stdout, stderr) {
 		console.log(stdout);
 		cb(err);
 	});
@@ -125,7 +125,17 @@ gulp.task('copy-vendors', function () {
 
 gulp.task('deploy', function () {
 	return gulp.src('src/_site/**')
-		.pipe(ghPages({branch: "master"}));
+		.pipe(ghPages({
+			remoteUrl: "https://$github_token@github.com/Vernando05/vernando05.github.io.git"
+			branch: "master"
+		}));
+});
+
+gulp.task('html-proofer', function (cb) {
+	exec('htmlproof ' + 'src/_site ' + '--disable-external', function (err, stdout, stderr) {
+		util.log(stdout)
+		cb(err);
+	});
 });
 
 gulp.task('watch', function () {
@@ -147,5 +157,9 @@ gulp.task('default', function () {
 gulp.task('production', function () {
 	flags.initBuild = true;
 	flags.production = true;
-	runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'copy-vendors', 'watch'], 'deploy');
+	runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'copy-vendors', 'watch']);
+});
+
+gulp.task('test', function () {
+	runSequence('html-proofer', 'deploy');
 });
