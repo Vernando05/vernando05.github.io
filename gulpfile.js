@@ -128,7 +128,7 @@ gulp.task('deploy', function () {
 });
 
 gulp.task('html-proofer', function (cb) {
-	exec('htmlproof ' + 'src/_site ' + '--disable-external', function (err, stdout, stderr) {
+	exec('htmlproofer ' + 'src/_site ' + '--disable-external', function (err, stdout, stderr) {
 		console.log(stdout)
 		cb(err);
 	});
