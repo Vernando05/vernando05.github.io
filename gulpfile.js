@@ -103,6 +103,10 @@ gulp.task('images', function () {
 });
 
 gulp.task('deploy', function () {
+	exec('git config --global user.email "usedgrey05@gmail.com" && git config --global user.name "vernando05"', function (err, stdout, stderr) {
+		if (err) console.log(err);
+		console.log(stdout);
+	});
 	return gulp.src('src/_site/**')
 		.pipe(plugins.ghPages({
 			remoteUrl: "https://$github_token@github.com/Vernando05/vernando05.github.io.git",
