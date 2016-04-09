@@ -344,10 +344,39 @@ header {
 	padding-bottom: 2px;
 	opacity: 0;
 	mix-blend-mode: difference;
+	box-sizing: content-box;
+	&:hover {
+		width: 40px;
+		.tcon-menu__lines {
+			width: 20px;
+		}
+		.tcon-menu__lines::before {
+			width: 28px;
+		}
+		.tcon-menu__lines::after {
+			width: 35px;
+		}
+	}
+	&.tcon-transform {
+		.tcon-menu__lines::before, .tcon-menu__lines::after, .tcon-menu__lines {
+			width: 40px;
+		}
+		.tcon-menu__lines {
+			transform: rotate(0deg);
+		}
+	}
+}
+.tcon-menu__lines {
+	float: right;
+}
+.tcon-menu__lines::after, .tcon-menu__lines::before {
+	right: 0;
+	left: auto;
 }
 .tcon-menu__lines, .tcon-menu__lines:before, .tcon-menu__lines:after {
 	border-radius: 0;
 	height: 3px;
+	width: 40px;
 }
 .tcon-menu__lines, .tcon-menu__lines::after, .tcon-menu__lines::before {
 	background-color: #fff;
