@@ -51,6 +51,7 @@
 
 			$nav.click(function () {
 				$body.removeClass('show-nav');
+				$body.removeClass('animate-init');
 				$('.main-menu').removeClass('animate-main-menu');
 				if ($tcon.hasClass('tcon-transform')) {
 					transformicons.revert('.tcon-menu--xcross');				
