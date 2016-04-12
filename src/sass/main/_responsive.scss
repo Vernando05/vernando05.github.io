@@ -24,6 +24,25 @@
 		letter-spacing: 20px;
 		padding-left: 20px;
 	}
+	.page-title {
+		text-align: center;
+	}
+	#particles-wrap {
+		margin-bottom: 60px;
+	}
+	#coverframe, #bg-particles {
+		left: 50%;
+		margin-right: -50%;
+		transform: translate(-50%, 0);
+	}
+	#about {
+		.col-sm-7 img {
+			margin-left: auto;
+		}
+		.col-sm-5 {
+			text-align: justify;
+		}
+	}
 	#contact-form {
 		margin-bottom: 50px;
 		.form-group > .col-sm-6:first-child {
