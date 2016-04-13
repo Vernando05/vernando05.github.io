@@ -380,20 +380,37 @@ header {
 		width: 40px;
 		.tcon-menu__lines {
 			width: 20px;
+			transition-delay: .15s;			
 		}
 		.tcon-menu__lines::before {
-			width: 28px;
+			width: 28px;			
 		}
 		.tcon-menu__lines::after {
 			width: 35px;
+			transition-delay: .30s;
 		}
 	}
 	&.tcon-transform {
-		.tcon-menu__lines::before, .tcon-menu__lines::after, .tcon-menu__lines {
+		.tcon-menu__lines {
 			width: 40px;
 		}
 		.tcon-menu__lines {
 			transform: rotate(0deg);
+			transition: opacity;
+		}
+		.tcon-menu__lines::before, .tcon-menu__lines::after  {
+			right: auto;
+			left: 0;
+			transform-origin: 20px;
+			transition-delay: 0s;
+		}
+	}
+	&.tcon-transform:hover {
+		.tcon-menu__lines::before {
+			animation: growWidthTconTransfrom .4s cubic-bezier(.08,.82,.17,1) forwards;
+		}
+		.tcon-menu__lines::after {
+			animation: growWidthTconTransfrom .4s cubic-bezier(.08,.82,.17,1) forwards .2s;
 		}
 	}
 }
@@ -411,6 +428,20 @@ header {
 }
 .tcon-menu__lines, .tcon-menu__lines::after, .tcon-menu__lines::before {
 	background-color: #fff;
+}
+@keyframes growWidthTconTransfrom {
+	0% {
+		width: 40px;
+	}
+	40% {
+		width: 0px;
+	}
+	60% {
+		width: 0px
+	}
+	100% {
+		width: 40px;
+	}
 }
 @keyframes slideInBottomFade {
 	from {
