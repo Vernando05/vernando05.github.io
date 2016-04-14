@@ -45,7 +45,7 @@
 		$(function () {
 			var $main = $('#main-content'),
 				$body = $('body'),
-				$nav = $('#main-nav a, .header-top a'),
+				$nav = $('.link-internal'),
 				$tcon = $('.tcon'),
 				everPushed = false;
 
