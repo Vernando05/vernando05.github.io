@@ -206,7 +206,8 @@ a {
 		position: absolute;
 		width: 0%;
 		border-bottom: 2px solid #000;
-		left: 0;
+		right: 0;
+		left: auto;
 		top: 50%;
 		transform: translate(0, -50%);
 		opacity: 0;
@@ -235,6 +236,8 @@ a {
 }
 .fx-link-side:hover:after,
 .fx-link-side:focus:after {
+	left: 0;
+	right: auto;
 	opacity: 1;
 	width: 100%;
 }
