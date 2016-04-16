@@ -27,6 +27,25 @@
 	.page-title {
 		text-align: center;
 	}
+	.form-default {
+		label.error {
+			display: block;
+			margin-top: -7px;
+			margin-bottom: 35px;
+		}
+		.control-label span {
+			transform: translate(12px, -15px);
+		}
+		textarea.form-control + .control-label span {
+			transform: translate(12px, -232px);
+		}
+		.form-control:focus + .control-label span, .form-control:valid + .control-label span {
+			transform: translate(0, -50px);
+		}
+		textarea.form-control:focus + .control-label span, textarea.form-control:valid + .control-label span {
+			transform: translate(0, -267px);
+		}
+	}
 	#particles-wrap {
 		margin-bottom: 60px;
 	}

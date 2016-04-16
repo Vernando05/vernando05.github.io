@@ -791,6 +791,9 @@ path {
 	opacity: 0;
 }
 .form-default {
+	.form-group {
+		margin-bottom: 25px;
+	}
 	.form-control {
 		background-color: transparent;
 		color: #000;
@@ -800,26 +803,56 @@ path {
 		border: none;
 		border: 1px solid #000;
 		text-transform: uppercase;
+		transition: all .3s ease;
+	}
+	textarea {
+		height: 251px;
 	}
 	.form-control.error {
-		border-color: #f00;
+		border-color: #bababa;
 	}
 	label.error {
-		font: 9.5px "FiraMono-Regular", sans-serif;
+		font: 9.5px "Raleway-Regular", sans-serif;
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		margin-top: 7px;
-		margin-bottom: 0;
+		margin-bottom: 15px;
 	}
 	textarea.form-control {
 		transition: max-height .3s ease;
+	}
+	.control-label {
+		position: relative;		
+		span {
+			font: 18px "JosefinSans-Light", sans-serif;
+			color: #767676;
+			text-transform: uppercase;
+			position: absolute;
+			bottom: 0;
+			transform: translate(12px, -20px);
+			transition: all .3s ease;
+			cursor: text;
+		}
+	}
+	textarea.form-control + .control-label span {
+		transform: translate(12px, -237px);
+	}
+	.form-control:focus + .control-label span, .form-control:valid + .control-label span {
+		transform: translate(0, -55px);
+		z-index: 0;
+		font-size: 16px;
+		cursor: default;
+		color: #000;
+	}
+	textarea.form-control:focus + .control-label span, textarea.form-control:valid + .control-label span {
+		transform: translate(0, -270px);
 	}
 }
 .form-control::-webkit-input-placeholder {
 	color: #000;
 }
 .form-control::-moz-placeholder {
-	color: #000;
+	color: #000; 
 }
 .form-control:-ms-input-placeholder {
 	color: #000;
@@ -865,6 +898,7 @@ path {
 	margin-bottom: 34px;
 	font-family: "JosefinSans-Light", monospace;
 	color: #000;
+	text-align: center;
 }
 .page-title.text-center {
 	color: #757474;
@@ -910,7 +944,6 @@ path {
 	.container > .row > .col-sm-12 {
 		padding-left: 15%;
 		padding-right: 15%;
-		text-align: center;
 	}
 	.page-title {
 		margin-bottom: 58px;
