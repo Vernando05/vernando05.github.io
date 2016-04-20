@@ -63,7 +63,8 @@ gulp.task('script-lib', function () {
 				'src/components/jquery-ui/jquery-ui.min.js',
 				'src/javascripts/bootstrap.min.js',
 				'src/components/transformicons/transformicons.js',
-				'src/components/jquery-validation/dist/jquery.validate.min.js'];
+				'src/components/jquery-validation/dist/jquery.validate.min.js',
+				'src/components/three.js/three.min.js'];
 
 	return gulp.src(paths)
 		.pipe(plugins.order(paths, {base: '.'}))
