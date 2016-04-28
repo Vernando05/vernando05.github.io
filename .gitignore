@@ -3,7 +3,4 @@ node_modules
 .jekyll-metadata
 .publish
 src/components
-src/_site
-!src/_site/CNAME
-!src/_site/README.md
-!src/_site/LICENSE
+src/_site/*
