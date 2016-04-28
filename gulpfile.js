@@ -42,7 +42,8 @@ gulp.task('style-main', function () {
 
 gulp.task('style-lib', function () {
 	var paths = ['src/components/simple-line-icons/css/simple-line-icons.css',
-			'src/components/transformicons/transformicons.css'];
+			'src/components/transformicons/transformicons.css',
+			'src/components/animate.css/animate.min.css'];
 	return gulp.src(paths)
 		.pipe(plugins.concat('lib.min.css'))
 		.pipe(plugins.minifyCss())
@@ -64,6 +65,7 @@ gulp.task('script-lib', function () {
 				'src/javascripts/bootstrap.min.js',
 				'src/components/transformicons/transformicons.js',
 				'src/components/jquery-validation/dist/jquery.validate.min.js',
+				'src/components/waypoints/lib/jquery.waypoints.min.js',
 				'src/components/three.js/three.min.js'];
 
 	return gulp.src(paths)

@@ -127,7 +127,7 @@ a {
 		color: #000;
 	}
 }
-#bg, .bg-page {
+#bg, .bg-page, .bg-white {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -136,6 +136,10 @@ a {
 	z-index: -11;
 	background: url("../images/bg-main.jpg") no-repeat center center;
 	background-size: cover;
+}
+.bg-white {
+	background-image: none;
+	background-color: #fff;
 }
 .overlay-blend {
 	position: fixed;
@@ -880,7 +884,7 @@ path {
 	padding: 10px;
 	border: 1px solid #000;
 	max-width: 300px;
-	background: white;
+	background: #fff;
 	p {
 		margin-bottom: 0;
 		font: 14px "OratorStd-Regular", monospace;
@@ -922,6 +926,38 @@ path {
 		border-color: #000;
 		color: #fff;
 	} 
+}
+@-webkit-keyframes fadeInUp2 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10%, 0);
+    transform: translate3d(0, 10%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp2 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10%, 0);
+    transform: translate3d(0, 10%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInUp2 {
+  -webkit-animation-name: fadeInUp2;
+  animation-name: fadeInUp2;
 }
 #coverframe {
 	position: absolute;
