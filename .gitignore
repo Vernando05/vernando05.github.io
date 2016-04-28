@@ -3,4 +3,3 @@ node_modules
 .jekyll-metadata
 .publish
 src/components
-src/_site
