@@ -4,3 +4,6 @@ node_modules
 .publish
 src/components
 src/_site
+!src/_site/CNAME
+!src/_site/README.md
+!src/_site/LICENSE
