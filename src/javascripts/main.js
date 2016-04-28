@@ -28,6 +28,9 @@
 		$("#load-screen").slideUp(1500, "easeInOutCubic", function () {
 			$('body').addClass('animate-init');
 			scrollAnimation($('.animated'));
+			if(document.getElementById("particles-object")){
+				particleSquare();
+			}
 			if (Modernizr.smil) {
 				logoAnimation.run(false);
 			}
@@ -212,9 +215,6 @@
 					$main.load(href + ' .main-page', function () {
 						onCompleteLoad();
 						contactForm();
-						if(document.getElementById("particles-object")){
-							particleSquare();
-						}
 					});
 				});
 			}
