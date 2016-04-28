@@ -87,32 +87,74 @@
 			<li><a class="fx-link-side link-internal" href="/">HOME</a></li>
 			<li><a class="fx-link-side link-internal" href="/about">ABOUT</a></li>
 			<li><a class="fx-link-side" target="_blank" href="https://id.linkedin.com/in/vernandosimbolon">PORTFOLIO</a></li>
-			<li><a class="fx-link-side link-internal" href="/coming-soon">BLOG</a></li>
+			<li><a class="fx-link-side link-internal" href="/coming-soon.html">BLOG</a></li>
 			<li><a class="fx-link-side link-internal" href="/contact">CONTACT</a></li>
 		</ul>
 	</div>
 </nav>
 
 		<div id="main-content">
-			<section id="about" class="main-page">
+			<section id="contact" class="main-page full-width">
 	<div class="bg-white"></div>
 	<div class="content">
 		<div class="container">
-			<div class="row">				
-				<div id="particles-wrap" class="col-sm-7 text-right animated" data-animation-sdn="fadeInUp2" data-animation-delay="0.4s">
-					<img id="particles-object" class="img-responsive" src="/images/vernandosimbolon.png" alt="Vernando Simbolon Portrait">
-					<img id="coverframe" src="/images/coverframe.png">
-				</div>
-				<div class="col-sm-5">
-					<h1 class="page-title animated" data-animation-sdn="fadeInUp2" data-animation-delay="0.6s">ABOUT</h1>
-					<div class="animated" data-animation-sdn="fadeInUp2" data-animation-delay="0.4s">
-						<p>Hi! I'm <strong>Vernando Simbolon</strong>, a 23 years old <strong>Front-End Developer</strong> based in Yogyakarta, Indonesia.<br>
-						I'm an art and science lover.
-						</p>
-						<p>Check out <strong>my cv <a href="/images/Vernando_Simbolon_Resume.pdf">here</a></strong> and also if you have any <strong>projects</strong> or <strong>opportunities</strong>, feel free to <strong>contact me <a class="link-internal" href="/contact">here</a></strong>.</p>
-
-						<p>My <strong>expertise</strong> and <strong>tools</strong>: HTML5, CSS3, SCSS via Compass, Javascript, jQuery, Microdata & Schema, Bootstrap, Gulp/Grunt, Bower, npm, Git, Photoshop</p>
-					</div>					
+			<div class="row">
+				<div class="col-sm-12">
+					<h1 class="page-title animated" data-animation-sdn="fadeInUp" data-animation-delay="0.4s">CONTACT</h1>
+					<form id="contact-form" class="form-horizontal form-default" method="POST">
+						<div id="success-message" class="message-pop" tabindex="-1" role="dialog">
+							<div class="absolute-center">
+								<div class="message-content">
+									<p>Your message was sent succssfully! I will be in touch as soon as I can.</p>
+								</div>										
+							</div>						
+						</div>
+						<div id="error-message" class="message-pop" tabindex="-1" role="dialog">
+							<div class="absolute-center">
+								<div class="message-content">
+									<p>Something went wrong, try refreshing and submitting the form again.</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-6 animated" data-animation-sdn="fadeInUp" data-animation-delay="0.6s">						
+								<input id="name" type="text" class="form-control" name="name" required>
+								<label class="control-label" for="name"><span>Name</span></label>
+							</div>
+							<div class="col-sm-6 animated" data-animation-sdn="fadeInUp" data-animation-delay="0.8s">
+								<input id="email" type="text" class="form-control" name="_replyto" required>
+								<label class="control-label" for="email"><span>Email</span></label>								
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12 animated" data-animation-sdn="fadeInUp2" data-animation-delay="1s">
+								<textarea id="message" class="form-control" name="message" rows="10" required></textarea>
+								<label class="control-label" for="message"><span>Message</span></label>
+							</div>
+						</div>
+						<input name="_gotcha" style="display:none" type="text">
+						<div class="box-btn text-right">
+							<button type="submit" class="btn btn-default btn-black animated" data-animation-sdn="fadeInUp" data-animation-delay="1.2s">SEND</button>
+						</div>								
+					</form>
+					<!-- <ul class="list-inline social-links">
+						<li><a href="https://github.com/Vernando05" target="_blank">git</a></li>
+						<li><a href="https://id.linkedin.com/in/vernandosimbolon" target="_blank">in</a></li>
+						<li><a href="https://www.facebook.com/vernando.simbolon" target="_blank">f</a></li>
+						<li><a href="https://twitter.com/vernando05" target="_blank">twitter</a></li>
+						<li><a href="https://www.flickr.com/photos/nand5/" target="_blank">o o</a></li>
+						<li><a href="https://soundcloud.com/lunarray" target="_blank">soundcloud</a></li>
+						<li><a href="https://www.youtube.com/user/Vernan05" target="_blank">youtube</a></li>
+					</ul> -->
+					<ul class="list-inline social-links" data-animation-sdn="fadeInUp" data-animation-delay="1.2s">
+						<li><a href="https://github.com/Vernando05" target="_blank"><i class="icon icon-github fx-link-toright"></i></a></li>
+						<li><a href="https://id.linkedin.com/in/vernandosimbolon" target="_blank"><i class="icon icon-linkedin fx-link-toright"></i></a></li>
+						<li><a href="https://www.facebook.com/vernando.simbolon" target="_blank"><i class="icon icon-facebook fx-link-toright"></i></a></li>
+						<li><a href="https://twitter.com/vernando05" target="_blank"><i class="icon icon-twitter fx-link-toright"></i></a></li>
+						<li><a href="https://www.flickr.com/photos/nand5/" target="_blank"><i class="icon icon-flickr fx-link-toright"></i></a></li>
+						<li><a href="https://soundcloud.com/lunarray" target="_blank"><i class="icon icon-soundcloud fx-link-toright"></i></a></li>
+						<li><a href="https://www.youtube.com/user/Vernan05" target="_blank"><i class="icon icon-youtube fx-link-toright"></i></a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
