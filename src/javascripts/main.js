@@ -195,7 +195,7 @@
 				}	
 				var toLoad = $(this).attr("href"),
 					currentLoc = window.location.hostname,
-					prefixedToLoad = 'http://' + currentLoc + $(this).attr("href");
+					prefixedToLoad = 'https://' + currentLoc + $(this).attr("href");
 				console.log(prefixedToLoad);
 				history.pushState(null, '', toLoad);
 				everPushed = true;
