@@ -193,13 +193,10 @@
 				if ($tcon.hasClass('tcon-transform')) {
 					transformicons.revert('.tcon-menu--xcross');				
 				}	
-				var toLoad = $(this).attr("href"),
-					currentLoc = window.location.hostname,
-					prefixedToLoad = 'https://' + currentLoc + $(this).attr("href");
-				console.log(prefixedToLoad);
+				var toLoad = $(this).attr("href");
 				history.pushState(null, '', toLoad);
 				everPushed = true;
-				loadContent(prefixedToLoad);
+				loadContent(toLoad);
 				return false;
 			});
 

@@ -94,7 +94,7 @@ gulp.task('modernizr', function (cb) {
 });
 
 gulp.task('jekyll', function (cb) {
-	exec( flags.initBuild ? 'jekyll build' : 'jekyll serve --skip-initial-build', function (err, stdout, stderr) {
+	exec( flags.initBuild ? 'jekyll build --config _config.yml,_config_dev.yml' : flags.production ? 'jekyll build --config _config.yml' : 'jekyll serve --skip-initial-build --config _config.yml,_config_dev.yml', function (err, stdout, stderr) {
 		console.log(stdout);
 		cb(err);
 	});
@@ -141,7 +141,7 @@ gulp.task('default', function () {
 });
 
 gulp.task('production', function () {
-	flags.initBuild = true;
+	flags.initBuild = false;
 	flags.production = true;
 	plugins.runSequence('clean', 'jekyll', 'style-bootstrap', 'modernizr', ['style-lib', 'style-main', 'script-lib', 'script-libhead', 'script-main', 'watch']);
 });
