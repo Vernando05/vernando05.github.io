@@ -194,6 +194,7 @@
 					transformicons.revert('.tcon-menu--xcross');				
 				}	
 				var toLoad = $(this).attr("href");
+				console.log(toLoad);
 				history.pushState(null, '', toLoad);
 				everPushed = true;
 				loadContent(toLoad);
