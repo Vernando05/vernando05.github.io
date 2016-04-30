@@ -126,8 +126,8 @@
 			windowHalfY = window.innerHeight / 2;
 			camera.aspect = window.innerWidth / window.innerHeight;
 			camera.updateProjectionMatrix();
-			objImgWidth = objImg.clientHeight;
-			objImgHeight = objImg.clientWidth;
+			objImgWidth = objImg.clientWidth;
+			objImgHeight = objImg.clientHeight;
 			renderer.setSize(objImgWidth, objImgHeight);
 		}
 		function onDocumentMouseMove(event) {
@@ -194,7 +194,6 @@
 					transformicons.revert('.tcon-menu--xcross');				
 				}	
 				var toLoad = $(this).attr("href");
-				console.log(toLoad);
 				history.pushState(null, '', toLoad);
 				everPushed = true;
 				loadContent(toLoad);
