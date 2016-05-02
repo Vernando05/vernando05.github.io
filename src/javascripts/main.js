@@ -28,9 +28,6 @@
 		$("#load-screen").slideUp(1500, "easeInOutCubic", function () {
 			$('body').addClass('animate-init');
 			scrollAnimation($('.animated'));
-			if(document.getElementById("particles-object")){
-				particleSquare();
-			}
 			if (Modernizr.smil) {
 				logoAnimation.run(false);
 			}
@@ -39,29 +36,6 @@
 	function animationEndCheck() {
 		$('.triangle-inverted3').one("webkitAnimationEnd oanimationend msAnimationEnd animationend", function (event) {
 			animationEnd = true;
-		});
-	}
-	function scrollAnimation(el, group) {
-		el.each(function () {
-			var self = $(this),
-				animationSdn = self.data('animationSdn'),
-				animationSup = self.data('animationSup'),
-				animationDelay = self.data('animationDelay');
-
-			self.css({
-				'-webkit-animation-delay': animationDelay,
-				'-moz-animation-delay': animationDelay,
-				'animation-delay': animationDelay
-			});
-
-			var initAnimate = (group) ? group : self;
-
-			initAnimate.waypoint(function (direction) {
-				self.addClass(animationSdn);
-			}, {
-				offset: '90%'
-			});
-
 		});
 	}
 	function particleSquare() {
@@ -169,6 +143,29 @@
 			renderer.render(scene, camera);
 		}
 	}
+	function scrollAnimation(el, group) {
+		el.each(function () {
+			var self = $(this),
+				animationSdn = self.data('animationSdn'),
+				animationSup = self.data('animationSup'),
+				animationDelay = self.data('animationDelay');
+
+			self.css({
+				'-webkit-animation-delay': animationDelay,
+				'-moz-animation-delay': animationDelay,
+				'animation-delay': animationDelay
+			});
+
+			var initAnimate = (group) ? group : self;
+
+			initAnimate.waypoint(function (direction) {
+				self.addClass(animationSdn);
+			}, {
+				offset: '90%'
+			});
+
+		});
+	}
 	$(document).ready(function () {
 		
 		transformicons.add('.tcon');
@@ -213,6 +210,11 @@
 					$main.load(href + ' .main-page', function () {
 						onCompleteLoad();
 						contactForm();
+						if (document.getElementById('particles-object') && document.getElementById('coverframe')) {
+							$('#particles-object').load(function (){
+								particleSquare();
+							});
+						}							
 					});
 				});
 			}
