@@ -161,7 +161,7 @@
 			initAnimate.waypoint(function (direction) {
 				self.addClass(animationSdn);
 			}, {
-				offset: '90%'
+				offset: '100%'
 			});
 
 		});
