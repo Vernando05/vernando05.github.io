@@ -220,17 +220,17 @@
 			}
 			return false;
 		});
-		$('.message-pop').click(function () {
-			$(this).fadeTo("slow", 0, function () {
-				$(this).hide();
-			});
-			$('#contact-form .form-group').fadeTo("slow", 1);
-		});
-		// Contact Validation
-		jQuery.validator.prototype.hideErrors = function() {
-			this.addWrapper(this.toHide).fadeOut();
-		};
 		var contactForm = function () {
+			$('.message-pop').click(function () {
+				$(this).fadeTo("slow", 0, function () {
+					$(this).hide();
+				});
+				$('#contact-form .form-group, #contact-form .box-btn').fadeTo("slow", 1);
+			});
+			// Contact Validation
+			jQuery.validator.prototype.hideErrors = function() {
+				this.addWrapper(this.toHide).fadeOut();
+			};
 			$("#contact-form").validate({
 				rules: {
 					name: {
@@ -291,8 +291,8 @@
 					error.hide().appendTo(element.parent());
 				},
 				submitHandler: function (form) {
-					$('#contact-form .form-group').fadeTo("slow", 0.5, function() {
-						$(this).find(':input, :button').prop('disabled', true);
+					$('#contact-form .form-group, #contact-form .box-btn').fadeTo("slow", 0.5, function() {
+						$('#contact-form .form-group').find(':input').prop('disabled', true);
 						$(this).find('label').css('cursor','default');
 					});
 					$.ajax({
@@ -302,15 +302,15 @@
 						dataType: "json",
 						success: function () {
 							$('#success-message').fadeTo("slow", 1);
-							$('#contact-form .form-group').fadeTo( "slow", 0.5, function() {
-								$(this).find(':input, :button').removeAttr('disabled');
+							$('#contact-form .form-group, #contact-form .box-btn').fadeTo( "slow", 0.5, function() {
+								$('#contact-form .form-group').find(':input').removeAttr('disabled');
 								$(this).find('label').css('cursor','default');
 							});
 						},
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							$('#error-message').fadeTo("slow", 1);
-							$('#contact-form .form-group').fadeTo( "slow", 0.5, function () {
-								$(this).find(':input, :button').removeAttr('disabled');
+							$('#contact-form .form-group, #contact-form .box-btn').fadeTo( "slow", 0.5, function () {
+								$('#contact-form .form-group').find(':input').removeAttr('disabled');
 								$(this).find('label').css('cursor','default');
 							});
 							//alert(errorThrown);
