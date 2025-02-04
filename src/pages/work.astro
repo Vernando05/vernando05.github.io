@@ -1,0 +1,46 @@
+---
+import CardMedia from '../components/CardMedia.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'Work';
+const works = [
+  {
+    title: 'samkuki',
+    url: 'samkuki.com',
+    subtitle: ['Indonesia', 'Design & Development', '2025'],
+    media: '/images/work-samkuki.jpg',
+  },
+  {
+    title: 'Vernando Simbolon',
+    url: 'vernandosimbolon.com',
+    subtitle: ['Indonesia', 'Design & Development', '2025'],
+    media: '/images/work-vernando.jpg',
+  },
+  {
+    title: 'Your Exciting project',
+    url: 'vernandosimbolon.com/contact',
+    subtitle: ['Anywhere', 'You decide', 'This year'],
+    media: '/images/work-new-project.jpg',
+  },
+];
+---
+<BaseLayout pageTitle={pageTitle}>
+  <div class="mx-auto grid w-10/12 grid-cols-1 space-y-2 lg:w-10/12 lg:space-y-56">
+    {
+      works.map(({ title, url, subtitle, media }) => (
+        <CardMedia
+          title={title}
+          url={url}
+          subtitle={subtitle}
+          media={media}
+          className="col-span-1"
+        />
+      ))
+    }
+  </div>
+</BaseLayout>
+<style is:global>
+  #gsapDecorative1 {
+    opacity: 0;
+  }
+</style>

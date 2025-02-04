@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "dbaeumer.vscode-eslint",
+    "csstools.postcss",
+    "bradlc.vscode-tailwindcss",
+    "vitest.explorer",
+    "yoavbls.pretty-ts-errors",
+    "ms-playwright.playwright",
+    "github.vscode-github-actions",
+    "lokalise.i18n-ally"
+  ],
+  "unwantedRecommendations": []
+}

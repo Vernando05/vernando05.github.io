@@ -1,0 +1,17 @@
+---
+const { title, url, subtitle, media, className } = Astro.props;
+---
+<div class:list={[className]}>
+  <p class="text-4xl font-semibold uppercase lg:text-9xl dark:text-white">{title}</p>
+  <div class="grid grid-cols-2 lg:grid-cols-4 dark:text-white">
+    <a href={`https://${url}`} class=" text-sm">{url}</a>
+    <p class="hidden text-sm lg:block">{subtitle[0]}</p>
+    <p class="text-right text-sm lg:text-left">{subtitle[1]}</p>
+    <p class="hidden text-sm lg:block">{subtitle[2]}</p>
+  </div>
+  <img
+    class="block aspect-video w-full max-w-full object-cover"
+    src={media}
+    alt={title}
+  />
+</div>

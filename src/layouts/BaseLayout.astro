@@ -1,0 +1,134 @@
+---
+import { ClientRouter } from 'astro:transitions';
+// import BackgroundAmbient from '../components/BackgroundAmbient';
+import BackgroundBlob from '../components/BackgroundBlob';
+import CursorTrail from '../components/CursorTrail';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/main.css';
+
+const { pageTitle } = Astro.props;
+---
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{pageTitle}</title>
+    <ClientRouter />
+  </head>
+  <body class="min-h-svh bg-black py-20 lg:py-60">
+    <div class="pointer-events-none fixed top-0 z-50 grid size-full grid-cols-1">
+      <div class="gsapCurtain size-full origin-top-right bg-black motion-scale-y-out-0 motion-duration-1000 motion-ease-in-quart" />
+      <div class="gsapCurtain w-full origin-bottom-right bg-black motion-scale-y-out-0 motion-duration-1000 motion-ease-in-quart" />
+      <!-- <div id="gsapCurtain3" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[500px] font-extrabold text-white">{pageTitle}</div> -->
+    </div>
+    <div id="gsapDecorative1" class="pointer-events-none fixed top-0 flex h-lvh w-full items-center justify-center">
+      <!-- <canvas id="ncanvas" class="fixed size-full" /> -->
+      <!-- <div id="gsapHome2" class="absolute hidden size-full">
+        <BackgroundAmbient client:only="react" transition:persist />
+      </div> -->
+      <div id="gsapHome3" class="absolute z-50 h-lvh w-full blur-md">
+        <BackgroundBlob client:only="react" transition:persist />
+      </div>
+    </div>
+    <CursorTrail client:only="react" transition:persist />
+    <Header />
+    <main class="relative">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+<script>
+import { navigate } from 'astro:transitions/client';
+import Lenis from 'lenis';
+
+const lenis = new Lenis({
+  autoRaf: true,
+});
+
+lenis.on('scroll', () => {
+});
+
+const toggleClasses = (elements, classRemoved, classAdded) => {
+  const classRemovedArray = classRemoved.split(' ');
+  const classAddedArray = classAdded.split(' ');
+
+  elements.forEach((element) => {
+    classRemovedArray.forEach((elementClass) => {
+      element.classList.toggle(elementClass);
+    });
+    classAddedArray.forEach((elementClass) => {
+      element.classList.toggle(elementClass);
+    });
+  });
+};
+document.querySelectorAll('a').forEach((anchor) => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const { target } = e;
+
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+
+    const anchor = target.closest('a');
+    if (anchor?.target) {
+      window.open(anchor.href, '_blank');
+      return;
+    }
+    if (anchor && anchor.href) {
+      const path = new URL(anchor.href).pathname;
+      const gsapCurtain = document.querySelectorAll('.gsapCurtain');
+      const gsapHome1 = document.querySelectorAll('#gsapHome1');
+      const gsapHome2 = document.querySelectorAll('#gsapHome2');
+      toggleClasses(gsapHome1, 'motion-scale-y-out-0 motion-delay-[1200ms]', 'motion-scale-y-in-0');
+      toggleClasses(gsapHome2, 'motion-scale-y-out-0 motion-delay-[1300ms]', 'motion-scale-y-in-0');
+      toggleClasses(gsapCurtain, 'motion-scale-y-in-0', 'motion-scale-y-out-0');
+      setTimeout(() => {
+        navigate(path);
+      }, 1000);
+    }
+  });
+});
+
+// const canvas = document.getElementById('ncanvas') as HTMLCanvasElement;
+// const ctx = canvas.getContext('2d');
+
+// function resize() {
+//   canvas.width = window.innerWidth;
+//   canvas.height = window.innerHeight;
+// }
+// resize();
+// window.onresize = resize;
+
+// function generate_noise(ctx) {
+//   const w = ctx.canvas.width;
+//   const h = ctx.canvas.height;
+//   const imageData = ctx.createImageData(w, h);
+
+//   for (let i = 0; i < imageData.data.length; i += 4) {
+//     const color = ((80 * Math.random()) | 0) << 24;
+//     imageData.data[i + 0] = color;
+//     imageData.data[i + 1] = color;
+//     imageData.data[i + 2] = color;
+//     imageData.data[i + 3] = 255;
+//   }
+
+//   ctx.putImageData(imageData, 0, 0);
+// }
+
+// let toggle = true;
+// (function loop() {
+//   toggle = !toggle;
+//   if (toggle) {
+//     requestAnimationFrame(loop);
+//     return;
+//   }
+//   generate_noise(ctx);
+//   requestAnimationFrame(loop);
+// })();
+</script>

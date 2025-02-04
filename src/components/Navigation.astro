@@ -1,0 +1,14 @@
+---
+const { links, id, className } = Astro.props;
+---
+<nav id={id} class:list={['inset-0 -z-10 size-full bg-white/5 bg-[radial-gradient(#777777_1px,transparent_1px)] [background-size:5px_5px]', className]}>
+  <ul class="inline-flex gap-x-52 xl:gap-36 min-[2560px]:gap-x-52">
+    {
+      links.map(({ url, title }) => (
+        <li>
+          <a href={url} data-astro-reload class="font-semibold tracking-tighter text-[#b5b5b5] lg:text-xl lg:tracking-normal">{title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
