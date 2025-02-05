@@ -224,7 +224,7 @@ export default function FormContact(props: FormContactPropsType) {
 
           <button
             type="submit"
-            className="w-full border-4 border-black bg-transparent px-7 py-4 text-xl font-bold transition-colors [transform:rotate3d(1,1,1,2deg)] hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-offset-2 lg:text-4xl dark:border-white dark:hover:border-indigo-500"
+            className="w-full border-4 border-black bg-transparent px-7 py-4 text-xl font-bold transition-colors hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-offset-2 lg:text-4xl dark:border-white dark:hover:border-indigo-500"
           >
             {isSubmitting
               ? (
@@ -257,7 +257,7 @@ export default function FormContact(props: FormContactPropsType) {
         {isSubmitSuccessful && isSuccess && (
           <>
             <div className="flex flex-col items-center justify-center rounded-md text-center text-white">
-              <p className="text-2x py-5">Thank you for reaching out! I'll get back to you soon.</p>
+              <p className="py-5 text-2xl">Thank you for reaching out! I'll get back to you soon.</p>
               <button
                 className="mt-2 font-semibold focus:outline-none"
                 onClick={() => reset()}
@@ -270,7 +270,7 @@ export default function FormContact(props: FormContactPropsType) {
         )}
 
         {isSubmitSuccessful && !isSuccess && (
-          <div className="text-cente flex flex-col items-center justify-center rounded-md">
+          <div className="flex flex-col items-center justify-center rounded-md text-center">
             <h3 className="py-7 text-2xl">Oops, Something went wrong!</h3>
             <p className="text-gray-300 md:px-3">{Message}</p>
           </div>

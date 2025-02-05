@@ -114,24 +114,28 @@ type CursorSvgConfig = typeof initialCursorConfig;
 
 export default function CursorTrail() {
   return (
-    <Cursor
-      initialConfig={initialCursorConfig}
-      renderItem={
-        (index, cx, cy) => (
-          <circle
-            key={index}
-            id={index.toString()}
-            r={!isTouchDevices ? 30 : 70}
-            cx={cx}
-            cy={cy}
-            fill="url('#gradient')"
-            fillOpacity={1}
-            stroke="none"
-            strokeWidth={0}
-            strokeOpacity={1}
+    isTouchDevices
+      ? ''
+      : (
+          <Cursor
+            initialConfig={initialCursorConfig}
+            renderItem={
+              (index, cx, cy) => (
+                <circle
+                  key={index}
+                  id={index.toString()}
+                  r={!isTouchDevices ? 30 : 70}
+                  cx={cx}
+                  cy={cy}
+                  fill="url('#gradient')"
+                  fillOpacity={1}
+                  stroke="none"
+                  strokeWidth={0}
+                  strokeOpacity={1}
+                />
+              )
+            }
           />
         )
-      }
-    />
   );
 }

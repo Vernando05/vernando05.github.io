@@ -1,22 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = 'Home Page';
+const pageTitle = 'Home';
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <div class="fixed left-0 top-0 grid size-full items-center md:grid-cols-[1fr,0.2fr,1fr] xl:grid-cols-[1fr,0.2fr,1fr] 2xl:grid-cols-[1fr,0.4fr,1fr]">
-    <div class="motion-translate-y-in-[10px] motion-opacity-in-0 motion-duration-1000 motion-delay-1000 motion-ease-out-cubic">
-      <p class="text-right text-9xl font-semibold motion-blur-loop-md motion-duration-[10s] motion-delay-[5s] md:text-7xl xl:text-8xl 2xl:text-9xl">
+  <div class="fixed left-0 top-0 grid size-full grid-cols-1 items-center md:grid-cols-[1fr,0.2fr,1fr] xl:grid-cols-[1fr,0.2fr,1fr] 2xl:grid-cols-[1fr,0.4fr,1fr]">
+    <div class="mb-2 self-end motion-translate-y-in-[10px] motion-opacity-in-0 motion-duration-1000 motion-delay-1000 motion-ease-out-cubic md:mb-0 md:self-center">
+      <p class="text-center text-5xl font-semibold motion-blur-loop-md motion-duration-[10s] motion-delay-[5s] md:text-right lg:text-7xl xl:text-8xl 2xl:text-9xl">
         <span class="bg-gradient-to-tr from-neutral-50 to-neutral-800 bg-clip-text text-transparent">
           Your Vision,
         </span>
       </p>
     </div>
-    <div>
+    <div class="hidden md:block">
       <!-- <img src="/svg/available-for-work.svg" class="mx-auto block size-20 animate-spin-slow" alt="available for work" /> -->
     </div>
-    <div class="motion-translate-y-in-[10px] motion-opacity-in-0 motion-duration-1000 motion-delay-[1.1s] motion-ease-out-cubic">
-      <p class="text-left text-9xl font-semibold motion-blur-loop-md motion-duration-[10s] motion-delay-[10s] md:text-7xl xl:text-8xl 2xl:text-9xl">
+    <div class="mt-2 self-start motion-translate-y-in-[10px] motion-opacity-in-0 motion-duration-1000 motion-delay-[1.1s] motion-ease-out-cubic md:mt-0 md:self-center">
+      <p class="text-center text-5xl font-semibold motion-blur-loop-md motion-duration-[10s] motion-delay-[10s] md:text-left lg:text-7xl xl:text-8xl 2xl:text-9xl">
         <span class="bg-gradient-to-tr from-neutral-50 to-neutral-800 bg-clip-text text-transparent">
           My Expertise.
         </span>

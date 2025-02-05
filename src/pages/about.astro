@@ -23,13 +23,13 @@ const pageTitle = 'About';
         <p class="text-center text-sm font-thin md:text-left md:text-lg lg:text-xl">With over a decade of experience <br />bridging the gap between design and technology <br />to create impactful digital products.</p>
       </div>
     </div>
-    <div class="overflow-hidden text-nowrap pt-32 md:pt-0 lg:pt-32">
+    <div class="overflow-hidden text-nowrap py-24 md:pt-0 lg:pb-0 lg:pt-32">
       <p class="inline-block text-nowrap pb-3 text-2xl font-semibold -motion-translate-x-loop-100/reset motion-duration-[20s] motion-ease-linear md:text-4xl lg:text-6xl xl:text-7xl 2xl:text-9xl">Design. Build. Grow.</p>
       <p class="inline-block text-nowrap pb-3 text-2xl font-semibold -motion-translate-x-loop-100/reset motion-duration-[20s] motion-ease-linear md:text-4xl lg:text-6xl xl:text-7xl 2xl:text-9xl">Design. Build. Grow.</p>
       <p class="inline-block text-nowrap pb-3 text-2xl font-semibold -motion-translate-x-loop-100/reset motion-duration-[20s] motion-ease-linear md:text-4xl lg:text-6xl xl:text-7xl 2xl:text-9xl">Design. Build. Grow.</p>
       <p class="inline-block text-nowrap pb-3 text-2xl font-semibold -motion-translate-x-loop-100/reset motion-duration-[20s] motion-ease-linear md:text-4xl lg:text-6xl xl:text-7xl 2xl:text-9xl">Design. Build. Grow.</p>
     </div>
-    <div class="flex h-lvh flex-col items-center justify-center space-y-32">
+    <div class="flex flex-col items-center justify-center md:h-lvh md:py-0">
       <p class="text-center text-xl font-medium md:text-3xl lg:text-5xl">
         I can help you with
         <ReactTyped
@@ -42,12 +42,15 @@ const pageTitle = 'About';
       </p>
       <!-- <p class="text-center text-xl font-thin">I specialize in crafting visually stunning websites, building seamless user experiences, and developing custom digital solutions <br />that align with your brand's unique identity.</p> -->
     </div>
-    <div class="grid grid-cols-2 items-center justify-center py-36 text-center md:h-lvh lg:h-auto">
+    <div class="grid grid-cols-2 items-center justify-center py-24 text-center md:h-lvh lg:h-auto">
       <div>
         <!-- <p class="text-xl font-thin">Whether you need a responsive website, an interactive web app, or a creative digital product, <br />I'm here to turn your vision into reality.</p> -->
-        <p class="text-3xl text-white">Let's talk <svg class="inline align-[-3px] dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M11.293 4.707 17.586 11H4v2h13.586l-6.293 6.293 1.414 1.414L21.414 12l-8.707-8.707-1.414 1.414z" /></svg></p>
+        <p class="text-xl text-white md:text-3xl">
+          Let's talk
+          <img class="inline size-5 align-[-4px] md:align-[-3px] dark:opacity-50 dark:invert" src="/svg/arrow.svg" alt="icon arrow" />
+        </p>
       </div>
-      <a href="/contact" class="mx-auto flex size-40 items-center justify-center rounded-full bg-gradient-to-tr from-black to-neutral-500 text-sm font-bold uppercase text-black mix-blend-difference motion-duration-2000 hover:motion-blur-loop-[1px]">Get in touch </a>
+      <a href="/contact" class="mx-auto flex size-28 items-center justify-center rounded-full bg-gradient-to-tr from-black to-neutral-500 text-xs font-bold uppercase text-black mix-blend-difference motion-duration-2000 hover:motion-blur-loop-[1px] md:size-40 md:text-sm">Get in touch </a>
     </div>
   </div>
 </BaseLayout>

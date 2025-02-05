@@ -7,7 +7,11 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import '../styles/main.css';
 
+const { origin } = Astro.url;
 const { pageTitle } = Astro.props;
+const formattedPageTitle = pageTitle === 'Home' ? 'Vernando Simbolon' : `${pageTitle} - Vernando Simbolon`;
+const metaDescription = 'Independent creative developer. Design and development.';
+const metaImage = `${origin}/favicon.svg`;
 ---
 <html lang="en" class="scroll-smooth">
   <head>
@@ -16,7 +20,15 @@ const { pageTitle } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <title>{pageTitle}</title>
+    <title>{formattedPageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <!-- Open Graph tags -->
+    <meta property="og:title" content={formattedPageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:image" content={metaImage} />
+    <meta property="og:image:alt" content="" />
     <ClientRouter />
   </head>
   <body class="min-h-svh bg-black py-20 lg:py-60">

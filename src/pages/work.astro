@@ -7,7 +7,7 @@ const works = [
   {
     title: 'samkuki',
     url: 'samkuki.com',
-    subtitle: ['Indonesia', 'Design & Development', '2025'],
+    subtitle: ['Indonesia', 'Design', '2025'],
     media: '/images/work-samkuki.jpg',
   },
   {
@@ -19,13 +19,13 @@ const works = [
   {
     title: 'Your Exciting project',
     url: 'vernandosimbolon.com/contact',
-    subtitle: ['Anywhere', 'You decide', 'This year'],
+    subtitle: ['Anywhere', 'Let\'s talk', 'This year'],
     media: '/images/work-new-project.jpg',
   },
 ];
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <div class="mx-auto grid w-10/12 grid-cols-1 space-y-2 lg:w-10/12 lg:space-y-56">
+  <div class="mx-auto grid w-10/12 grid-cols-1 space-y-24 lg:w-10/12 lg:space-y-56">
     {
       works.map(({ title, url, subtitle, media }) => (
         <CardMedia
