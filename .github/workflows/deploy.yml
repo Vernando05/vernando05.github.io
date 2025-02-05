@@ -16,6 +16,10 @@ permissions:
 
 jobs:
   build:
+    env:
+      SENTRY_AUTH_TOKEN: ${{ vars.SENTRY_AUTH_TOKEN }}
+      PUBLIC_API_WEB3FORM: ${{ vars.PUBLIC_API_WEB3FORM }}
+      PUBLIC_SENTRY_DSN: ${{ vars.PUBLIC_SENTRY_DSN }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
