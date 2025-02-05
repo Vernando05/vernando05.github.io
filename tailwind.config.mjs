@@ -12,6 +12,9 @@ export default {
           to: { transform: 'rotate(-360deg)' },
         },
       },
+      screens: {
+        '3xl': '1920px',
+      },
     },
     fontFamily: {
       // 'lexend-deca': ['"Lexend Deca"', 'serif'],
